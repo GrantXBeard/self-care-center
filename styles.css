@@ -6,3 +6,37 @@ dark-blue - #134d71;
 white - #ffffff;
 black - #000000;
 */
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  background: linear-gradient(#134d71, #78a7c6, #f7e4bf);
+  background-size: 100%;
+}
+
+.body-wrapper {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+
+section {
+  background-color: #fff;
+  padding: 40px;
+}
+
+.form {
+  width: 1000px;
+  height: 180px;
+}
+
+.message {
+  width: 1500px;
+  height: 275px;
+}
+
+svg.icon {
+  height: 200px;
+}
