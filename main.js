@@ -31,11 +31,15 @@ var mantras = [
   'I am the sky, the rest is weather.'
 ]
 
-// var affirmation = document.querySelector('input[value="affirmation"]');
-// var mantra = document.querySelector('input[value="mantra"]');
+var image = document.querySelector('img');
 
-var messageButton = document.querySelector('button');
+var message = document.querySelector('.message');
+
+var messageButton = document.querySelector('.receive');
 messageButton.addEventListener('click', showMessage);
+
+var clearButton = document.querySelector('.clear');
+clearButton.addEventListener('click', clearMessage)
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -44,19 +48,21 @@ function getRandomIndex(array) {
 function showMessage() {
   var affirmation = document.querySelector('input[value="affirmation"]');
   var mantra = document.querySelector('input[value="mantra"]');
-  var message = document.querySelector('.message');
   event.preventDefault();
 
   if (affirmation.checked) {
-    hideImage();
+    show(clearButton);
+    hide(image);
     message.classList.remove('hidden','red');
     message.innerText = `${affirmations[getRandomIndex(affirmations)]}!`;
   } else if (mantra.checked) {
-    hideImage();
+    show(clearButton);
+    hide(image);
     message.classList.remove('hidden','red');
     message.innerText = `${mantras[getRandomIndex(mantras)]}!`;
   } else {
-    hideImage();
+    hide(image);
+    hide(clearButton);
     message.classList.remove('hidden');
     message.classList.add('red')
     message.innerText = 'Please make a selection.'
@@ -65,7 +71,16 @@ function showMessage() {
   mantra.checked = false;
 }
 
-function hideImage() {
-  var image = document.querySelector('img');
-  image.classList.add('hidden');
+function clearMessage(){
+  hide(message);
+  hide(clearButton);
+  show(image);
+}
+
+function show(variable){
+  variable.classList.remove('hidden')
+}
+
+function hide(variable) {
+  variable.classList.add('hidden');
 }
