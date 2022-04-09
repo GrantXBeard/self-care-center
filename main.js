@@ -30,3 +30,42 @@ var mantras = [
   'Onward and upward.',
   'I am the sky, the rest is weather.'
 ]
+
+// var affirmation = document.querySelector('input[value="affirmation"]');
+// var mantra = document.querySelector('input[value="mantra"]');
+
+var messageButton = document.querySelector('button');
+messageButton.addEventListener('click', showMessage);
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+};
+
+function showMessage() {
+  var affirmation = document.querySelector('input[value="affirmation"]');
+  var mantra = document.querySelector('input[value="mantra"]');
+  var message = document.querySelector('.message');
+  event.preventDefault();
+
+  if (affirmation.checked) {
+    hideImage();
+    message.classList.remove('hidden','red');
+    message.innerText = `${affirmations[getRandomIndex(affirmations)]}!`;
+  } else if (mantra.checked) {
+    hideImage();
+    message.classList.remove('hidden','red');
+    message.innerText = `${mantras[getRandomIndex(mantras)]}!`;
+  } else {
+    hideImage();
+    message.classList.remove('hidden');
+    message.classList.add('red')
+    message.innerText = 'Please make a selection.'
+  }
+  affirmation.checked =false;
+  mantra.checked = false;
+}
+
+function hideImage() {
+  var image = document.querySelector('img');
+  image.classList.add('hidden');
+}
