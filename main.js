@@ -83,14 +83,34 @@ function showMessage() {
   mantra.checked = false;
 }
 
+function showUserMessage(message){
+  hide(newForm);
+  hide(messageInput);
+  hide(addNewButton);
+  show(choiceInputs);
+  show(messageButton);
+  show(addButton);
+  clearMessage();
+  hide(icon);
+  show(clearButton);
+  message.innerText = `${message}!`;
+}
+
 function addNewMessage(){
   var addAffirmation = document.querySelector('input[value="addaffirmation"]');
   var addMantra = document.querySelector('input[value="addmantra"]');
 
   if (addAffirmation.checked) {
-    affirmations.push(messageInput.value)
+    h2.classList.add('red');
+    affirmations.push(messageInput.value);
+    showUserMessage(addaffirmation)
   } else if (addMantra.checked) {
-    mantras.push(messageInput.value)
+    h2.classList.add('red');
+    mantras.push(messageInput.value);
+    showUserMessage(addMantra);
+  } else {
+    h2.classList.add('red');
+    h2.innerText = 'Please make a selection';
   }
 }
 
@@ -99,10 +119,11 @@ function showForm(){
   hide(choiceInputs);
   hide(messageButton);
   hide(addButton);
-  hide(icon);
   show(newForm);
   show(messageInput);
   show(addNewButton);
+  clearMessage();
+  hide(icon);
 
 
 
