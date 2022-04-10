@@ -5,12 +5,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>  &#10024;Self Care Center&#10024;</h1>
+    <h1>&#10024;Self Care Center&#10024;</h1>
       <main class="body-wrapper">
           <div class="selection">
-            <h2>Which type of message?</h2>
+            <h2>Which type of message would you like to hear?</h2>
             <section class="form-box">
-              <form>
+              <form class="add-message hidden">
+                <div class="input-box">
+                  <input type="radio" name="addaffirmation" value="addaffirmation">
+                  <label for="addaffirmation">add affirmation</label>
+                </div>
+                <div class="input-box">
+                  <input type="radio" name="addmantra" value="addmantra">
+                  <label for="addmantra">add mantra</label>
+                </div>
+              </form>
+              <form class="inputs">
                 <div class="input-box">
                   <input type="radio" name="affirmation" value="affirmation">
                   <label for="affirmation">affirmations</label>
@@ -21,13 +31,15 @@
                 </div>
               </form>
               <button class="receive">Receive Message</button>
-              <button>Add Message</button>
+              <button class="add">Add Message</button>
             </section>
           </div>
           <section class="message-box">
+            <input class="hidden" type="text" name="add-message" id="add-message" placeholder="Add message Here">
+            <button class="add-new hidden">Add new Message</button>
             <p class="message hidden"></p>
             <button class="clear hidden">Clear Message</button>
-            <img src="./assets/meditate.svg">
+            <img class="icon" src="./assets/meditate.svg">
           </section>
       </main>
     <script type="text/javascript" src="main.js"></script>

@@ -31,12 +31,24 @@ var mantras = [
   'I am the sky, the rest is weather.'
 ]
 
-var image = document.querySelector('img');
-
+var h2 = document.querySelector('h2');
+var choiceInputs = document.querySelector('.inputs');
+var icon = document.querySelector('.icon');
 var message = document.querySelector('.message');
+var newForm = document.querySelector('.add-message')
+var messageInput = document.querySelector('#add-message')
+
+
+var addNewButton = document.querySelector('.add-new')
+addNewButton.addEventListener('click', addNewMessage)
+
+
 
 var messageButton = document.querySelector('.receive');
 messageButton.addEventListener('click', showMessage);
+
+var addButton = document.querySelector('.add');
+addButton.addEventListener('click', showForm)
 
 var clearButton = document.querySelector('.clear');
 clearButton.addEventListener('click', clearMessage)
@@ -52,16 +64,16 @@ function showMessage() {
 
   if (affirmation.checked) {
     show(clearButton);
-    hide(image);
+    hide(icon);
     message.classList.remove('hidden','red');
     message.innerText = `${affirmations[getRandomIndex(affirmations)]}!`;
   } else if (mantra.checked) {
     show(clearButton);
-    hide(image);
+    hide(icon);
     message.classList.remove('hidden','red');
     message.innerText = `${mantras[getRandomIndex(mantras)]}!`;
   } else {
-    hide(image);
+    hide(icon);
     hide(clearButton);
     message.classList.remove('hidden');
     message.classList.add('red')
@@ -71,14 +83,39 @@ function showMessage() {
   mantra.checked = false;
 }
 
+function addNewMessage(){
+  var addAffirmation = document.querySelector('input[value="addaffirmation"]');
+  var addMantra = document.querySelector('input[value="addmantra"]');
+
+  if (addAffirmation.checked) {
+    affirmations.push(messageInput.value)
+  } else if (addMantra.checked) {
+    mantras.push(messageInput.value)
+  }
+}
+
+function showForm(){
+  h2.innerText = 'Which type of message would you like to add?';
+  hide(choiceInputs);
+  hide(messageButton);
+  hide(addButton);
+  hide(icon);
+  show(newForm);
+  show(messageInput);
+  show(addNewButton);
+
+
+
+}
+
 function clearMessage(){
   hide(message);
   hide(clearButton);
-  show(image);
+  show(icon);
 }
 
 function show(variable){
-  variable.classList.remove('hidden')
+  variable.classList.remove('hidden');
 }
 
 function hide(variable) {
